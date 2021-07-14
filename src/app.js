@@ -1,5 +1,5 @@
-import Main from './main'
-import './styles.css'
+import Main from "./main";
+import "./styles.css";
 
 Main.initView();
-window.shuffle= Main.shuffle;
+window.shuffle = Main.shuffle;

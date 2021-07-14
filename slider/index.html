@@ -1,7 +1,85 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<title>Slider test</title>
-	</head>
-	<body></body>
+<html lang="en">
+  <head>
+    <title>Slider test</title>
+    <script src="./index.js" defer async></script>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        background-color: #7656d6;
+        color: #333;
+        text-align: center;
+        letter-spacing: 0.15em;
+        font-size: 22px;
+      }
+			.outer_container {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				width: 100vw;
+				height: 100vh;
+			}
+
+			.inner_container {
+				overflow: hidden;
+				position: relative;
+				width: 100%;
+				height: 100%;
+				z-index: 1;
+			}
+
+			.slides {
+				display: flex;
+				position: relative;
+				top: 0;
+				left: -100%;
+				width: 30000px;
+				height: 100vh;
+			}
+
+			.slides.shifting {
+				transition: left 0.2s ease-out;
+			}
+
+			.slide {
+				width: 100vw;
+				height: 100%;
+				cursor: pointer;
+				display: flex;
+				color: #ffffff;
+				flex-direction: column;
+				justify-content: center;
+				transition: all 1s;
+				position: relative;
+				background: #ffcf47;
+			}
+
+			.outer_container.ready .slide:nth-child(5),
+      .outer_container.ready .slide:nth-child(2) {
+        background: #4f253e;
+      }
+			.outer_container.ready .slide:nth-child(3) {
+				background: #30254f;
+			}
+			.outer_container.ready .slide:nth-child(1),
+      .outer_container.ready .slide:nth-child(4){
+        background: #254f2b;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div id="outer_container" class="outer_container">
+      <div class="inner_container">
+        <div id="slides" class="slides">
+          <div class="slide">Slide 1</div>
+          <div class="slide">Slide 2</div>
+          <div class="slide">Slide 3</div>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>

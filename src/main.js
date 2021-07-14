@@ -5,10 +5,7 @@ class App {
   tileDimension = 0;
   size = 0;
   moves = 0;
-
-  // using 4px as gutter space between tiles, divide puzzle field
-  // into equal parts based on size variable
-  static gutterSpacing = 4;
+  tileBorder = 10;
 
   initView = () => {
     // set default values
@@ -25,12 +22,16 @@ class App {
     for (let i = 1; i <= numberOfTiles; i++) {
       this.tilePositionList.push(i);
     }
-    // set a fixed width and height for puzzle field
-    this.puzzleField.style.width = "500px";
-    this.puzzleField.style.height = "500px";
 
-    this.tileDimension =
-      (500 - App.gutterSpacing * (this.size + 1)) / this.size;
+
+    // each tile will have a border of 10px
+    // we will need to multiply 10 by 2 by number cells per row
+    const wh = 500+((this.tileBorder*2)*this.size);
+    // set a fixed width and height for puzzle field
+    this.puzzleField.style.width = `${wh}px` ;
+    this.puzzleField.style.height = `${wh}px`;
+
+    this.tileDimension = (500 / this.size);
 
     this.shuffle();
   };
@@ -189,8 +190,8 @@ class App {
   // calculate and return the next position of a moving tile
   // with gutter spacing
   positionOnXYAxis = (dXY) => {
-    const tileDimensionWithGutter = this.tileDimension + App.gutterSpacing;
-    return dXY * tileDimensionWithGutter + App.gutterSpacing;
+    const tileDimensionWithGutter = this.tileDimension + (this.tileBorder*2);
+    return dXY * tileDimensionWithGutter;
   };
 
   // check if user solved puzzle

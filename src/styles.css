@@ -17,4 +17,5 @@
     font-size: 28px;
     cursor: pointer;
     transition: all 300ms ease-in-out;
+    border: 10px inset gray;
 }
